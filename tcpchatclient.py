@@ -4,20 +4,21 @@ import threading
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(('127.0.0.1', 12345))
 
-nickname = input('Type a nickname: ')
+nickname = input('Type your nickname: ')
 
 
 def receive():
     while True:
         try:
-            message = client.recv(1024).decode('ascii')
-            if message == 'NICK':
+            # this block will receive messages from the server
+            message = client.recv(1024).decode('ascii')  # client receives from the server
+            if message == 'NICK':  # server side sends the NICK message
                 client.send(nickname.encode('ascii'))
                 pass
             else:
-                print(message)
+                print(message)  # if it's not the client's nickname, it will print what the server is showing
         except:
-            print('Error occured!')
+            print('An error occurred!')
             client.close()
             break
 
