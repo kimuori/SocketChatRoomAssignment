@@ -9,8 +9,9 @@ server.bind((host, port))
 server.listen()
 
 # listing empty lists and it will store clients and nicknames
-clients = []
+clients = []  # ip addressese
 nicknames = []
+users = {'bill':'123', 'james':'321'}
 
 # broadcast
 ''' sends message to all clients currently connected to the server '''
@@ -22,9 +23,11 @@ def broadcast(message):
 def handle(client):
     while True:
         try:
+            # broadcasting messages
             message = client.recv(1024)
             broadcast(message)  # broadcasts the message
         except:
+            #remove and close clients
             index = clients.index(client)  # find the client that failed
             clients.remove(client)  # remove the client
             client.close()  # close the connection to the client
@@ -45,6 +48,18 @@ def receive():
         # request and store nickname
         client.send('NICK'.encode('ascii'))  # sends the NICK to the client
         nickname = client.recv(1024).decode('ascii')
+        # client.send('PASS').encode('ascii')
+        # password = client.recv(1024).decode(ascii)
+
+        # while True:
+        #   try:
+        #       if users[nickname] == password: ....
+        #           clients.append(client)
+        #           nicknames[nickname]
+        #           break
+        #   except: ....
+        #        client.send("USername/password is incorrect. Try again.")
+        #        client.send
         nicknames.append(nickname)
         clients.append(client)
 
