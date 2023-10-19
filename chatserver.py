@@ -21,9 +21,12 @@ def broadcast():
                 clients.append(address)
             for c in clients:
                 try:
-                    if message.decode().startswith("SIGNUP TAG: "):
-                        name = message.decode()[message.decode().index(":") + 1:]
-                        server.sendto(f"{name} joined!".encode(), c)
+                    if message.decode().startswith("ACK USERNAME: "):
+                        # chat line formatting
+                        name = message.decode()[message.decode().index(" ") + 1:]
+                        # msg sends to notify all clients
+                        server.sendto(f"[{name} joined the chatroom!]".encode(), c)
+
                     else:
                         server.sendto(message, c)
                 except:
