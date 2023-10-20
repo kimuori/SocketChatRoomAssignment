@@ -39,6 +39,7 @@ def handle(client):
 
 # receive method
 def receive():
+    # sends local consolse message that the server is running
     print('Server is ready to listen...')
 
     while True:

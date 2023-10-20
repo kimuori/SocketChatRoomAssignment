@@ -1,14 +1,14 @@
 import sys
 import threading
 import socket
-import random
 
 
 def receive():
     while True:
         try:
             # message = input('>')
-            message, _ = client.recvfrom(1024)
+            message, _ = client.recvfrom(1024) # this user receives other public msgs from other clients
+            # print("$$" + message.decode())  #  their own msg will also show up
             print(message.decode())
 
         except:
@@ -17,15 +17,19 @@ def receive():
 
 if __name__ == '__main__':
     # use: 127.0.0.1 as server_name
-    name = input("Nickname: ")
-    server_name = input("Server IP: ")
-    password = input("password (will not do anything): ")
+    if len(sys.argv) < 3 or sys.argv[2] == "9999":
+        print("CDM Instructions: 'python chatclient.py [IP address] [port num =/= 9999] [username]'")
+        print("DO NOT USE PORT NUMBER '9999'. ")
+        print("This program will close now.")
+        sys.exit(0)  # exits the client from program
 
-    # check user function
-    #
+    server_name = sys.argv[1]
+    client_port = int(sys.argv[2])
+    name = sys.argv[3]
 
+    # binds the client to a socket
     client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    client.bind((server_name, random.randint(8000, 9000)))
+    client.bind((server_name, client_port))
 
     receive_thread = threading.Thread(target=receive)
     receive_thread.start()
@@ -35,13 +39,14 @@ if __name__ == '__main__':
     # local print message of chat instructions.
     print('INSTRUCTIONS:\n* Type a message and hit enter.\n* You may chose the command lines below:')
     print('   1. "EX"/"ex" to exit program.')
+
     while True:
-        message = input(">>") # indicates a message being passed in the server
+        message = input(">>") # indicates local client
 
         if message.upper() == "EX": #if user decides to exit
             # msg sends to notify all clients that this client has left
-            client.sendto(f"[{name} left the server.]".encode(), (server_name, 9999))
-            print('>>You left the server.')  # local message of this user leaving
+            client.sendto(f"[{name} left the server]".encode(), (server_name, 9999)) # sends message to server via line 60
+            print('>>You left the server.')  # local console message of this user leaving
             client.close()  # closes the client
             sys.exit(0)  # exits the client from program
 
