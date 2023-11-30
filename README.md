@@ -45,4 +45,4 @@ There are other chat room implementation using TCP. This protocol has not been i
 
 There can be additonal functions such as storing username and password. This feature has not been implemented.
 
-There are other files in here that are copies, skepeton code, and redundant. I do not have time to get around it to polish this project and remove the files. Please take this repository with a grain of salt!
+There are other files in here that are copies, skeleton code, and redundant. I do not have time to get around it to polish this project and remove the files. Please take this repository with a grain of salt!
