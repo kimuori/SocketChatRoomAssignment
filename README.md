@@ -1,7 +1,7 @@
 # Chat Room Socket Programming
 This program was a part of my college course assignment to implement a UDP protocol in a chat room. There is also TCP protocol chatroom that has yet to be implemented.
 
-## About UDP Chat Room Socket
+## How to use UDP Chat Room Socket
 2 programs must run together: `chatserver.py` and `chatclient.py`.
 This program was tested using a Linux machine and terminal to run the program.
 
