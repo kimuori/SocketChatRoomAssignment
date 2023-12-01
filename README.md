@@ -2,7 +2,7 @@
 This program was a part of my college course assignment to implement a UDP protocol in a chat room. There is also TCP protocol chatroom that has yet to be implemented.
 
 ## How to use UDP Chat Room Socket
-2 programs must run together: `chatserver.py` and `chatclient.py`.
+Two programs must run together: `chatserver.py` and `chatclient.py`.
 This program was tested using a Linux machine and terminal to run the program.
 
 First, run the `chatserver.py` in the terminal. There is no need to put port number.
@@ -11,19 +11,19 @@ In the terminal, type the command below. This will start the program to start li
 * NOTE: Interpreter may vary (e.g. 'py', 'python2', 'python3', etc. ) so type the first part according to your machine.
 
 Second, run the `chatclient.py` in a separate terminal. There are specific instructions to type the arguemnt.
-On the Command Line, the instructions follows:
->`python chatclient.py [IP address] [port num =/= 9999] [username]`. 
+In the terminal, the instructions follows:
+>`python3 chatclient.py [IP] [port num =/= 9999] [username]`. 
 
 If this format is incorrectly formatted, it will end the program.
 There are notes to keep in mind:
 * The chatserver.py currently reserves port number 9999. 
 * If typing `localhost` does not work for the IP address, try to type `127.0.0.1`, as an example.
-* EXAMPLE OF THE CMD LINE: `python chatclient 127.0.0.1 7890 iLoveHunting123`
+* EXAMPLE OF THE COMMAND: `python chatclient 127.0.0.1 7890 iLoveHunting123`
 
 You can create multiple instances of `chatclient.py` as long as the client instance does not occupy the port number already reserved by another client!
 
-<u>Information of the Command Lines ('PM', 'DM', 'EX'):</u>
-* EX (Exit) will disconnect the client from the server.
+<u><b>Information of the command lines 'PM', 'DM', and 'EX'</b></u>
+* EX (Exit) disconnects the client from the server.
 * PM (Public Message) allows clients to broadcast their messages to other clients. 
   The client can simply choose to type any message without declaring 'PM'. 
   The server will still treat that message as PM by default.
