@@ -7,12 +7,16 @@ This program was tested using a Linux machine and terminal to run the program.
 
 First, run the `chatserver.py` in the terminal. There is no need to put port number.
 In the terminal, type the command below. This will start the program to start listening for clients.
->`python3 chatserver.py`
+```
+python3 chatserver.py
+```
 * NOTE: Interpreter may vary (e.g. 'py', 'python2', 'python3', etc. ) so type the first part according to your machine.
 
 Second, run the `chatclient.py` in a separate terminal. There are specific instructions to type the arguemnt.
 In the terminal, the instructions follows:
->`python3 chatclient.py [IP] [port num =/= 9999] [username]`. 
+```
+python3 chatclient.py [IP] [port num =/= 9999] [username]
+```
 
 If this format is incorrectly formatted, it will end the program.
 There are notes to keep in mind:
